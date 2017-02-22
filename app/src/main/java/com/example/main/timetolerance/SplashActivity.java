@@ -15,6 +15,8 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         Thread welcomeThread = new Thread() {
 
@@ -22,10 +24,10 @@ public class SplashActivity extends Activity {
             public void run() {
                 try {
                     super.run();
-                    float seconds = (new Random().nextFloat()) % 5f;
+                    float seconds = (new Random().nextInt(5)) + 1;
                     Log.d("TIME DELAY: ", "" + seconds);
-                    Log.d("FINAL DELAY: ", "" + (long)(seconds * 10000));
-                    sleep((long)(seconds * 10000));  //Delay of 10 seconds
+                    Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
+                    sleep((long)(seconds * 1000));
                 } catch (Exception e) {
 
                 } finally {
