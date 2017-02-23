@@ -13,11 +13,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.main.timetolerance.Data.SavingData;
+
+import org.joda.time.DateTime;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TextUpdateActivity extends AppCompatActivity {
     TextView resultText;
     Button badButton, okButton, goodButton, resultButton;
+    int timeInSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +37,10 @@ public class TextUpdateActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(TextUpdateActivity.this,
+                        DataListActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -49,18 +58,21 @@ public class TextUpdateActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
+                        int time = 0;
                         try {
                             super.run();
-                            float seconds = (new Random().nextInt(5)) + 1;
+                            int seconds = (new Random().nextInt(5)) + 1;
                             Log.d("TIME DELAY: ", "" + seconds);
+                            time = seconds;
                             Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
                             sleep((long)(seconds * 1000));
                         } catch (Exception e) {
 
                         } finally {
+                            final int timer = time;
                             handler.post(new Runnable(){
                                 public void run() {
-                                    updateText();
+                                    updateText(timer);
                                 }
                             });
                         }
@@ -74,6 +86,8 @@ public class TextUpdateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "TextUpdate Screen time: " + timeInSeconds + " seconds , BAD, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
@@ -82,6 +96,8 @@ public class TextUpdateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "TextUpdate Screen time: " + timeInSeconds + " seconds , OK, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
@@ -90,12 +106,15 @@ public class TextUpdateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "TextUpdate Screen time: " + timeInSeconds + " seconds , GOOD, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
 
     }
-    void updateText(){
+    void updateText(int time){
+        timeInSeconds = time;
         resultText.setText("4\nHow do you rate speed of value update?");
         resultButton.setVisibility(View.INVISIBLE);
         badButton.setVisibility(View.VISIBLE);
@@ -108,5 +127,17 @@ public class TextUpdateActivity extends AppCompatActivity {
                 FinalActivity.class);
         startActivity(i);
         finish();
+    }
+
+    void SaveNewData(String data){
+        List<String> stringsList = SavingData.getData(getApplicationContext());
+        if(stringsList != null)
+            stringsList.add(data);
+        else
+        {
+            stringsList = new ArrayList<String>();
+            stringsList.add(data);
+        }
+        SavingData.PushListData(getApplicationContext(), stringsList);
     }
 }

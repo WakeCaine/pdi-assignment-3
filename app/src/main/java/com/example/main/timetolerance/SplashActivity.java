@@ -18,22 +18,26 @@ public class SplashActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
         Thread welcomeThread = new Thread() {
 
             @Override
             public void run() {
+                int timeInSeconds = 0;
                 try {
                     super.run();
-                    float seconds = (new Random().nextInt(5)) + 1;
+                    int seconds = (new Random().nextInt(5)) + 1;
                     Log.d("TIME DELAY: ", "" + seconds);
+                    timeInSeconds = seconds;
                     Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
                     sleep((long)(seconds * 1000));
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 } finally {
 
                     Intent i = new Intent(SplashActivity.this,
                             MainActivity.class);
+                    i.putExtra("timeInSeconds", timeInSeconds);
                     startActivity(i);
                     finish();
                 }

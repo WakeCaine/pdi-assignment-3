@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.main.timetolerance.Data.SavingData;
+
+import java.util.List;
 import java.util.Random;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -25,8 +28,10 @@ public class LoadingActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(LoadingActivity.this,
+                        DataListActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -45,9 +50,11 @@ public class LoadingActivity extends AppCompatActivity {
 
             @Override
             public void run() {
+                int time = 0;
                 try {
                     super.run();
-                    float seconds = (new Random().nextInt(5)) + 1;
+                    int seconds = (new Random().nextInt(5)) + 1;
+                    time = seconds;
                     Log.d("TIME DELAY: ", "" + seconds);
                     Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
                     sleep((long)(seconds * 1000));
@@ -56,6 +63,7 @@ public class LoadingActivity extends AppCompatActivity {
                 } finally {
                     Intent i = new Intent(LoadingActivity.this,
                             LoadingAnswersActivity.class);
+                    i.putExtra("timeInSeconds", time);
                     startActivity(i);
                     finish();
                 }

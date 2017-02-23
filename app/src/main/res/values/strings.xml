@@ -11,4 +11,5 @@
     <string name="title_activity_loading_answers">LoadingAnswersActivity</string>
     <string name="title_activity_text_update">TextUpdateActivity</string>
     <string name="title_activity_final">FinalActivity</string>
+    <string name="title_activity_data_list">DataListActivity</string>
 </resources>

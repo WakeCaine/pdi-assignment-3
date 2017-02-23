@@ -38,6 +38,10 @@
         <activity
             android:name=".FinalActivity"
             android:label="@string/title_activity_final"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DataListActivity"
+            android:label="@string/title_activity_data_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

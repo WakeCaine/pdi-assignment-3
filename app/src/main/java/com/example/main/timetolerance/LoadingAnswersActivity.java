@@ -10,11 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class LoadingAnswersActivity extends AppCompatActivity {
+import com.example.main.timetolerance.Data.SavingData;
 
+import org.joda.time.DateTime;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LoadingAnswersActivity extends AppCompatActivity {
+    int timeInSecondsLoading = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        timeInSecondsLoading = getIntent().getExtras().getInt("timeInSeconds");
         setContentView(R.layout.activity_loading_answers);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -23,8 +31,10 @@ public class LoadingAnswersActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(LoadingAnswersActivity.this,
+                        DataListActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -36,6 +46,8 @@ public class LoadingAnswersActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "Loading Screen time: " + timeInSecondsLoading + " seconds , BAD, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
@@ -44,6 +56,8 @@ public class LoadingAnswersActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "Loading Screen time: " + timeInSecondsLoading + " seconds , OK, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
@@ -52,10 +66,25 @@ public class LoadingAnswersActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Results saved.", Toast.LENGTH_SHORT).show();
                 //save data here
+                String data = "Loading Screen time: " + timeInSecondsLoading + " seconds , GOOD, " + DateTime.now().toString("MM/dd/yyyy HH:mm");
+                SaveNewData(data);
                 LoadNextActivity();
             }
         });
     }
+
+    void SaveNewData(String data){
+        List<String> stringsList = SavingData.getData(getApplicationContext());
+        if(stringsList != null)
+            stringsList.add(data);
+        else
+        {
+            stringsList = new ArrayList<String>();
+            stringsList.add(data);
+        }
+        SavingData.PushListData(getApplicationContext(), stringsList);
+    }
+
     void LoadNextActivity(){
         Intent i = new Intent(LoadingAnswersActivity.this,
                 TextUpdateActivity.class);
