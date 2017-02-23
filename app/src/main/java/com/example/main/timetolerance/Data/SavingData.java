@@ -1,4 +1,4 @@
-package com.example.main.timetolerance.Data;
+package com.example.main.timetolerance.data;
 
 import android.app.Application;
 import android.content.Context;

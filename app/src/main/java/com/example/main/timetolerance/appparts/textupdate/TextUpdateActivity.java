@@ -1,10 +1,9 @@
-package com.example.main.timetolerance;
+package com.example.main.timetolerance.appparts.textupdate;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,7 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.main.timetolerance.Data.SavingData;
+import com.example.main.timetolerance.DataListActivity;
+import com.example.main.timetolerance.FinalActivity;
+import com.example.main.timetolerance.R;
+import com.example.main.timetolerance.data.SavingData;
 
 import org.joda.time.DateTime;
 

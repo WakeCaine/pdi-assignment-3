@@ -1,4 +1,4 @@
-package com.example.main.timetolerance.Data;
+package com.example.main.timetolerance.data;
 
 /*
  * Copyright 2014 KC Ochibili
@@ -34,8 +34,7 @@ import android.graphics.Bitmap;
 
         import android.content.Context;
         import android.content.SharedPreferences;
-        import android.graphics.Bitmap;
-        import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.CompressFormat;
         import android.graphics.BitmapFactory;
         import android.os.Environment;
         import android.preference.PreferenceManager;

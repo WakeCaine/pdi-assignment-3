@@ -1,12 +1,13 @@
-package com.example.main.timetolerance;
+package com.example.main.timetolerance.appparts._main;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.main.timetolerance.R;
 
 import java.util.Random;
 

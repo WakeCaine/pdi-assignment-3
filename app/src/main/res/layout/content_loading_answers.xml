@@ -12,7 +12,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.main.timetolerance.LoadingAnswersActivity"
+    tools:context="com.example.main.timetolerance.appparts.loading.LoadingAnswersActivity"
     tools:showIn="@layout/activity_loading_answers"
     android:weightSum="1">
     <TextView
