@@ -11,14 +11,34 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoadingActivity"
+            android:label="@string/title_activity_loading"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReactionActivity"
+            android:label="@string/title_activity_reaction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoadingAnswersActivity"
+            android:label="@string/title_activity_loading_answers"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TextUpdateActivity"
+            android:label="@string/title_activity_text_update"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FinalActivity"
+            android:label="@string/title_activity_final"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

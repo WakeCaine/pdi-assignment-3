@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">TimeTolerance</string>
     <string name="action_settings">Settings</string>
-    <string name="after_splash">How fast was the app loading?</string>
+    <string name="after_splash">How do you rate speed of the app loading screen?</string>
+    <string name="after_loading">How do you rate speed of this loading screen?</string>
     <string name="bad_button">BAD</string>
     <string name="ok_button">OK</string>
     <string name="good_button">GOOD</string>
+    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_reaction">ReactionActivity</string>
+    <string name="title_activity_loading_answers">LoadingAnswersActivity</string>
+    <string name="title_activity_text_update">TextUpdateActivity</string>
+    <string name="title_activity_final">FinalActivity</string>
 </resources>
