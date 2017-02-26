@@ -18,7 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".appparts.loading.LoadingActivity"
-            android:label="@string/title_activity_loading"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
