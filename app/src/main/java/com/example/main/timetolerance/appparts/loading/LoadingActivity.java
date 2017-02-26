@@ -49,14 +49,15 @@ public class LoadingActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                int time = 0;
+                float time = 0;
                 try {
                     super.run();
-                    int seconds = (new Random().nextInt(5)) + 1;
-                    time = seconds;
-                    Log.d("TIME DELAY: ", "" + seconds);
-                    Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
-                    sleep((long)(seconds * 1000));
+                    int seconds = new Random().nextInt(9);
+                    float values[] = {1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f, 5f};
+                    time = values[seconds];
+                    Log.d("TIME DELAY: ", "" + time);
+                    Log.d("FINAL DELAY: ", "" + (long)(time * 1000));
+                    sleep((long)(time * 1000));
                 } catch (Exception e) {
 
                 } finally {

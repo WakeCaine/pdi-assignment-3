@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_text_update"
@@ -9,9 +9,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.main.timetolerance.appparts.textupdate.TextUpdateActivity"
     tools:showIn="@layout/activity_text_update">
+
+    <TextView
+        android:visibility="invisible"
+        android:text="sddsf"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/buttonResult"
+        android:layout_alignStart="@+id/buttonResult" />
 
     <TextView
         android:text="Click and see result\nHERE"
@@ -19,9 +34,16 @@
         android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:id="@+id/resultTextView"
-        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="2 X 2"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonResult"
+        android:layout_above="@+id/badButton"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -58,12 +80,4 @@
         android:layout_alignStart="@+id/okButton"
         android:layout_marginTop="20dp" />
 
-    <Button
-        android:text="2 X 2"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonResult"
-        android:layout_above="@+id/badButton"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+</LinearLayout>

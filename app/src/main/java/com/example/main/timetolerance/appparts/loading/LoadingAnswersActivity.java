@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoadingAnswersActivity extends AppCompatActivity {
-    int timeInSecondsLoading = 0;
+    float timeInSecondsLoading = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        timeInSecondsLoading = getIntent().getExtras().getInt("timeInSeconds");
+        timeInSecondsLoading = getIntent().getExtras().getFloat("timeInSeconds");
         setContentView(R.layout.activity_loading_answers);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

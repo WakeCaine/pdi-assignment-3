@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.Random;
 
 public class TextUpdateActivity extends AppCompatActivity {
-    TextView resultText;
+    TextView resultText, numberText;
     Button badButton, okButton, goodButton, resultButton;
-    int timeInSeconds;
+    float timeInSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class TextUpdateActivity extends AppCompatActivity {
         });
 
         resultText = (TextView) findViewById(R.id.resultTextView);
+        numberText = (TextView) findViewById(R.id.numberTextView);
 
         badButton = (Button) findViewById(R.id.badButton);
         okButton = (Button) findViewById(R.id.okButton);
@@ -60,18 +61,19 @@ public class TextUpdateActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        int time = 0;
+                        float time = 0;
                         try {
                             super.run();
-                            int seconds = (new Random().nextInt(5)) + 1;
-                            Log.d("TIME DELAY: ", "" + seconds);
-                            time = seconds;
-                            Log.d("FINAL DELAY: ", "" + (long)(seconds * 1000));
-                            sleep((long)(seconds * 1000));
+                            int seconds = new Random().nextInt(9);
+                            float values[] = {0.4f, 0.6f, 0.8f, 1.0f, 1.2f, 1.4f, 1.6f, 1.8f, 2f};
+                            Log.d("TIME DELAY: ", "" + values[seconds]);
+                            time = values[seconds];
+                            Log.d("FINAL DELAY: ", "" + (long)(time * 1000));
+                            sleep((long)(time * 1000));
                         } catch (Exception e) {
 
                         } finally {
-                            final int timer = time;
+                            final float timer = time;
                             handler.post(new Runnable(){
                                 public void run() {
                                     updateText(timer);
@@ -115,11 +117,14 @@ public class TextUpdateActivity extends AppCompatActivity {
         });
 
     }
-    void updateText(int time){
+    void updateText(float time){
         timeInSeconds = time;
-        resultText.setText("4\nHow do you rate speed of value update?");
+        resultText.setText("How do you rate speed of value update?");
+        numberText.setText("4");
+        numberText.setTextSize(60);
         resultButton.setVisibility(View.INVISIBLE);
         badButton.setVisibility(View.VISIBLE);
+        numberText.setVisibility(View.VISIBLE);
         okButton.setVisibility(View.VISIBLE);
         goodButton.setVisibility(View.VISIBLE);
     }
